@@ -88,6 +88,8 @@
  *
  */
 
+#include "config.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -97,8 +99,6 @@
 #include <stdarg.h>
 #include <libusb-1.0/libusb.h>
 
-#define APP_NAME "zena"
-#define VERSION "0.4.3, 16 Feb 2012"
 #define USB_VENDOR_ID 0x04d8   // Microchip Technologies Inc
 #define USB_PRODUCT_ID 0x000e  // ZENA
 #define INTERFACE 0
@@ -434,7 +434,7 @@ void usage () {
 }
 
 void version () {
-	fprintf (stderr,"%s, version %s\n", APP_NAME, VERSION);
+	fprintf (stderr, PACKAGE_NAME ", version " VERSION "\n");
 }
 
 /**
