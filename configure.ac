@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([zena], [0.4.3], [jdesbonnet@gmail.com])
+AC_INIT([zena], [0.5.0], [jdesbonnet@gmail.com])
 AC_CONFIG_SRCDIR([zena.c])
 AC_CONFIG_HEADER([config.h])
 
