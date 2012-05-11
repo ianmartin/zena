@@ -1,3 +1,5 @@
+AM_CPPFLAGS = $(LIBUSB_CFLAGS)
+
 bin_PROGRAMS = \
     zena
 
