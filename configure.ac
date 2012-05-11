@@ -14,6 +14,7 @@ AC_PROG_CC
 AM_PROG_CC_C_O
 
 # Checks for libraries.
+AC_SEARCH_LIBS([clock_gettime], [rt])
 PKG_CHECK_MODULES(LIBUSB, libusb-1.0 >= 1.0.0)
 
 AC_CONFIG_FILES([Makefile])
