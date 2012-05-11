@@ -34,3 +34,7 @@ The ZigBee channel to sniff on must always be specified. The default is behaviou
 To log to a file:
 
     zena -c [channel] > log.pcap
+
+See the [original blog post][blog] for some more (slightly out of date) details.
+
+[blog]: http://jdesbonnet.blogspot.co.uk/2011/02/using-microchip-zena-zigbee802154.html
