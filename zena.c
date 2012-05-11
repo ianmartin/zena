@@ -729,33 +729,14 @@ int main( int argc, char **argv) {
 				// Write PCAP packet header
 				fwrite (&zena_packet.host_ts_sec, sizeof(int), 1, stdout);	// ts_sec: timestamp seconds
 				fwrite (&zena_packet.host_ts_usec, sizeof(int), 1, stdout);	// ts_usec: timestamp microseconds
-
-				// Small problem re FCS. ZENA does not provide this information.
-				// Solution is in the case of a good packet not to include FCS
-				// and Wireshark will ignore it. In the case were the FCS is 
-				// known to be bad, we'll include a deliberatly wrong FCS. For
-				// the moment this will be a fixed value (0x0000), but ideally
-				// it should be computed from the packet and the +1 to guarantee
-				// it is a bad FCS.
-
-				if (zena_packet.fcs_ok) {
-
-					packet_len_plus_2 = zena_packet.packet_len+2;
+				/* Wireshark can read ZENA packet FCS so output it */
+				packet_len_plus_2 = zena_packet.packet_len+2;
 						
-					// write packet excluding FCS
-					fwrite (&zena_packet.packet_len, sizeof(int), 1, stdout);
-					fwrite (&packet_len_plus_2, sizeof(int), 1, stdout);	// full frame included 2 FCS octets
-					fwrite (zena_packet.packet, 1, zena_packet.packet_len, stdout);
-				} else {
+				// write packet including FCS
+				fwrite (&packet_len_plus_2, sizeof(int), 1, stdout);
+				fwrite (&packet_len_plus_2, sizeof(int), 1, stdout);
+				fwrite (zena_packet.packet, 1, packet_len_plus_2, stdout);
 
-					// two extra bytes for deliberately wrong FCS
-					
-					fwrite (&packet_len_plus_2, sizeof(int), 1, stdout);
-					fwrite (&packet_len_plus_2, sizeof(int), 1, stdout);
-					zena_packet.packet[zena_packet.packet_len] = 0;
-					zena_packet.packet[zena_packet.packet_len+1] = 0;
-					fwrite (zena_packet.packet, 1, packet_len_plus_2, stdout);
-				}
 
 				fflush(stdout);
 				break;
