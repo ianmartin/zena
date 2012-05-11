@@ -37,4 +37,6 @@ To log to a file:
 
 See the [original blog post][blog] for some more (slightly out of date) details.
 
+The major change since version 0.4.3 is the output of the TI CC24XX FCS instead in the pcap format. This allows Wireshark to read the RSSI and LQI indicators. This setting must be enabled in Wireshark via Edit->Preferences->Protocol->IEE 02.15.4, then make sure "TI CC24XX FCS format" is checked.
+
 [blog]: http://jdesbonnet.blogspot.co.uk/2011/02/using-microchip-zena-zigbee802154.html
