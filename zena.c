@@ -532,7 +532,7 @@ int main( int argc, char **argv) {
 					fprintf(stderr,"ERROR: unrecognized output format '%s'. Only pcap or usbhex allowed.\n",optarg);
 					exit(-1);
 				}
-            	break;
+                                break;
 			case 'h':
 				version();
 				usage();
