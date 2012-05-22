@@ -183,7 +183,7 @@ libusb_device_handle *setup_libusb_access() {
 	// http://libusb.sourceforge.net/api-1.0/group__lib.html
 	debug (1, "calling libusb_init() to initialize libusb");	
 	status = libusb_init (NULL);
-	if ( status < 0 ) {
+	if ( status != 0 ) {
 		fprintf (stderr,"ERROR: Could not initialize libusb\n");
 		return NULL;
 	}
