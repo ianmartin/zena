@@ -295,7 +295,7 @@ int zena_set_channel (libusb_device_handle *zena, int channel) {
 		}
 	} while (nbytes>0);
 
-
+        return 0;
 }
 
 
